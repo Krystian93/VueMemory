@@ -1,9 +1,19 @@
-#app {
-    margin: 0 auto;
-    max-width: 800px;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 10px;
 }
 
 .card {
     height: 200px;
     width: 200px;
+    border: 2px solid black;
 }
