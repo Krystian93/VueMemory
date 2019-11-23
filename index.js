@@ -36,9 +36,6 @@ const app = new Vue({
     this.generateCards();
     this.shuffle(this.cards);
   },
-  updated() {
-   console.log('parent forced to updete');
-  },
 
 
   methods: {
