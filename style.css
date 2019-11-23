@@ -15,9 +15,23 @@ body {
 .card {
     height: 200px;
     width: 200px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .card-move {
     transition: transform 1s;
+}
+
+.board__panel {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.board__points {
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.board__reset {
+    padding: .5rem 1rem;
 }

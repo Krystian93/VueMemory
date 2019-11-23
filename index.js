@@ -25,20 +25,15 @@ const app = new Vue({
   data: {
     clickedCards: [],
     showingCards: false,
+    points:0,
+    numberOfCards:6, 
 
-    cards: [
-      { id: 1, color: "#9E2B25", show: false },
-      { id: 2, color: "#9E2B25", show: false },
-      { id: 3, color: "#51355A", show: false },
-      { id: 4, color: "#51355A", show: false },
-      { id: 5, color: "#43AA8B", show: false },
-      { id: 6, color: "#43AA8B", show: false },
-      { id: 7, color: "#B2B09B", show: false },
-      { id: 8, color: "#B2B09B", show: false }
-    ]
+    cards: []
   },
 
+
   created() {
+    this.generateCards();
     this.shuffle(this.cards);
   },
   updated() {
@@ -47,6 +42,26 @@ const app = new Vue({
 
 
   methods: {
+
+    generateCards(){
+       let idOfCard = 0;
+       
+        for(let i = 1 ; i <= this.numberOfCards ; i++){
+          let color = '#'+Math.floor(Math.random()*16777215).toString(16);
+
+          for(let j = 1 ; j<=2 ; j++){
+            this.cards.push({
+              id:idOfCard,
+              color:color,
+              show:false,
+            })
+            idOfCard++;
+          }
+        }
+
+        
+    },
+
     clickCard(card) {
       if (this.showingCards === false) {
         if (this.clickedCards.length != 2) {
@@ -61,6 +76,7 @@ const app = new Vue({
 
     checkCards() {
       if (this.clickedCards[0].color === this.clickedCards[1].color) {
+        this.points++;
         this.clickedCards = [];
       } else {
         this.showingCards = true;
@@ -69,7 +85,7 @@ const app = new Vue({
           this.clickedCards[1].show = false;
           this.clickedCards = [];
           this.showingCards = false;
-        }, 1000);
+        }, 500);
       }
     },
 
@@ -89,13 +105,15 @@ const app = new Vue({
 
     restartGame(){
       if(!this.showingCards){
+        this.points = 0;
         this.cards.forEach(card=>card.show = false);
         this.clickedCards = [];
         this.showingCards = false;
         this.cards = this.shuffle(this.cards);
-          this.$forceUpdate(); // little hack - parent component is not updating when items in cards array are chaning places..
+        this.$forceUpdate(); // little hack - parent component is not updating when items in cards array are chaning places..
       }
     },
 
   }
 });
+
