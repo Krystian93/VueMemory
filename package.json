@@ -1,0 +1,22 @@
+{
+  "name": "vue-1",
+  "version": "1.0.0",
+  "description": "vue memory games",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Krystian93:WUR5TEwNJzkaQ}_X@github.com/Krystian93/VueMemory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Krystian93/VueMemory/issues"
+  },
+  "homepage": "https://github.com/Krystian93/VueMemory#readme",
+  "dependencies": {
+    "gh-pages": "^2.1.1"
+  }
+}
